@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Routes
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to MySellerCentral AmazonAds Services',
+    message: 'Welcome to XpenseSync server!',
   })
 })
 routesList(app)
