@@ -23,13 +23,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Routes
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to MySellerCentral AmazonAds Services',
+    message: 'Welcome to XpenseSync server!',
   })
 })
 routesList(app)
 
-const PORT = process.env.PORT
-
+const PORT = process.env.PORT || 3000
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
