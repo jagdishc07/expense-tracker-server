@@ -28,8 +28,7 @@ app.get('/', (req, res) => {
 })
 routesList(app)
 
-const PORT = process.env.PORT
-
+const PORT = process.env.PORT || 3000
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
@@ -39,4 +38,4 @@ connectDB()
   .catch((err) => {
     console.error(err)
     process.exit(1)
-  })
+  })``
