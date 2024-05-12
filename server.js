@@ -9,7 +9,7 @@ dotenv.config()
 const app = express()
 
 const corsOptions = {
-  origin: process.env.DEV_ORIGIN,
+  origin: process.env.ORIGIN,
   methods: ['POST', 'PUT', 'GET', 'DELETE'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
@@ -19,7 +19,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Connect to MongoDB
-connectDB()
 
 // Routes
 app.get('/', (req, res) => {
@@ -31,6 +30,13 @@ routesList(app)
 
 const PORT = process.env.PORT
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`)
+    })
+  })
+  .catch((err) => {
+    console.error(err)
+    process.exit(1)
+  })
